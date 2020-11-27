@@ -6,6 +6,7 @@
 #include "BouncyBall.h"
 #include "Brick.h"
 #include "../src/Button.h"
+#include "../src/Label.h"
 
 
 class Part2Scene : public Scene
@@ -23,6 +24,11 @@ public:
 
 	
 private:
+
+	// IMGUI Function
+	void GUI_Function() const;
+	std::string m_guiTitle;
+
 	glm::vec2 m_mousePosition;
 
 
@@ -33,7 +39,19 @@ private:
 	// Brick
 	Brick* m_pBrick;
 
+	// Back Button
 	Button* m_pBackButton;
+
+	// UI Items
+	Label* m_pInstructionsLabel;
+	Label* m_pdistanceLabel;
+	Label* m_pVelocityLabel;
+	Label* m_pAccLabel;
+	Label* m_pAngleLabel;
+	Label* m_pFFrictionLabel;
+	Label* m_pFNormalLabel;
+	Label* m_pFGravityLabel;
+	Label* m_pFNetLabel;
 };
 
 #endif /* defined (__PART2_SCENE__) */

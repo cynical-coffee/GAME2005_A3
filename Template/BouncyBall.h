@@ -17,7 +17,10 @@ public:
 	virtual void clean() override;
 
 	
-	
+	bool isGravityEnabled = false;
+	float getDistance(GameObject*);
+	bool isColliding(GameObject*);
+
 private:
 	void m_move();
 	void m_checkBounds();
@@ -26,7 +29,8 @@ private:
 	const int FPS = 60;
 	float deltaTime = 1.0f / FPS;
 	float elasticity = 0.6f;
-
+	const float mpp = 10.0f; // 5 meter per pixel
+	const glm::vec2 gravity = glm::vec2(0.0f, 9.8f);
 	
 };
 

@@ -44,13 +44,25 @@ void BouncyBall::clean()
 
 void BouncyBall::m_move()
 {
+		
+	if (!isGravityEnabled)
+	{
+		getRigidBody()->acceleration = glm::vec2(0, 0);
+	}
+	else
+	{
+		// gravity
+		getRigidBody()->velocity.y += gravity.y * deltaTime *mpp;
+		getRigidBody()->acceleration = gravity;
+		
+	}
 
-	
+		
 		getTransform()->position.y += getRigidBody()->velocity.y * deltaTime;
 		getTransform()->position.x += getRigidBody()->velocity.x * deltaTime;
 		
-		// gravity
-		getRigidBody()->velocity.y += 400 * deltaTime;
+		
+		
 	
 }
 
@@ -63,12 +75,15 @@ void BouncyBall::m_checkBounds()
 		getTransform()->position.y += getRigidBody()->velocity.y * deltaTime;
 		getRigidBody()->velocity.x *= 0.6;
 		
+		getRigidBody()->acceleration -= gravity;
 	}
 	// ceiling
 	if (getTransform()->position.y <= 0 )
 	{
 		getRigidBody()->velocity.y = -getRigidBody()->velocity.y * elasticity;
 		getTransform()->position.y += getRigidBody()->velocity.y * deltaTime;
+		
+		getRigidBody()->acceleration -= gravity;
 	}
 
 	// wall right
@@ -76,12 +91,14 @@ void BouncyBall::m_checkBounds()
 	{
 		getRigidBody()->velocity.x = -getRigidBody()->velocity.x * elasticity;
 		getTransform()->position.x += getRigidBody()->velocity.x * deltaTime;
+		
 	}
 	// wall left
 	if (getTransform()->position.x - getWidth() / 2 <= 0)
 	{
 		getRigidBody()->velocity.x = -getRigidBody()->velocity.x * elasticity;
 		getTransform()->position.x += getRigidBody()->velocity.x * deltaTime;
+		
 	}
 }
 
@@ -90,6 +107,14 @@ void BouncyBall::m_reset()
 	
 }
 
+float BouncyBall::getDistance(GameObject* pOther) {
+	glm::vec2 myPos = getTransform()->position;
+	glm::vec2 otherPos = pOther->getTransform()->position;
 
+	// Use pythagorean to calculate distance c = sqrt(a^2 + b^2)
+	float a = myPos.x - otherPos.x;
+	float b = myPos.y - otherPos.y;
+	return sqrt(a * a + b * b);
+}
 
 

@@ -25,6 +25,9 @@ private:
 	Label* m_pInstructionsLabel{};
 	Label* m_pScene2Label{};
 
+	// Names
+	Label* m_pStudentName{};
+
 	Ship* m_pShip{};
 
 	Button* m_pStartButton;

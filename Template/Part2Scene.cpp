@@ -166,7 +166,7 @@ void Part2Scene::GUI_Function() const
 
 	
 
-	ImGui::SetNextWindowPos(ImVec2(250, 165)); // hardcoded the position of imgui
+	ImGui::SetNextWindowPos(ImVec2(0, 0)); // hardcoded the position of imgui
 	ImGui::Begin("Physics Control", NULL, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_MenuBar);
 
 
@@ -216,7 +216,7 @@ void Part2Scene::GUI_Function() const
 		m_pBrick->getTransform()->position - glm::vec2(m_pBrick->getWidth() * 0.5, m_pBrick->getHeight()), m_pBrick->getWidth() * 0.5, m_pBrick->getHeight() * 0.5)
 		< (m_pBouncyBall->getHeight() * 0.5 * m_pBouncyBall->getHeight() * 0.5))
 	{
-		m_pBouncyBall->getRigidBody()->velocity.x = -10;
+		m_pBouncyBall->getRigidBody()->velocity.x = -50;
 		
 		m_pBouncyBall->getRigidBody()->acceleration.y -= m_pBouncyBall->getRigidBody()->acceleration.y;
 		m_pAccLabel->setText("Acceleration = " + std::to_string(m_pBouncyBall->getRigidBody()->acceleration.y));
@@ -228,7 +228,7 @@ void Part2Scene::GUI_Function() const
 		m_pBrick->getWidth() * 0.5, m_pBrick->getHeight() * 0.5)
 		< (m_pBouncyBall->getHeight() * 0.5 * m_pBouncyBall->getHeight() * 0.5))
 	{
-		m_pBouncyBall->getRigidBody()->velocity.x = 10;
+		m_pBouncyBall->getRigidBody()->velocity.x = 50;
 	
 		m_pBouncyBall->getRigidBody()->acceleration.y -= m_pBouncyBall->getRigidBody()->acceleration.y;
 		m_pAccLabel->setText("Acceleration = " + std::to_string(m_pBouncyBall->getRigidBody()->acceleration.y));

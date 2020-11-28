@@ -19,7 +19,7 @@ public:
 	
 	bool isGravityEnabled = false;
 	float getDistance(GameObject*);
-	bool isColliding(GameObject*);
+	//bool isColliding(GameObject*);
 
 private:
 	void m_move();
